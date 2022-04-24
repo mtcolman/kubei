@@ -5,6 +5,10 @@ go 1.17
 require (
 	github.com/Portshift/go-utils v0.0.0-20211213074910-dd69e9ff3e27
 	github.com/bxcodec/faker/v3 v3.7.0
+	github.com/cisco-open/kubei/api v0.0.0
+	github.com/cisco-open/kubei/runtime_scan v0.0.0
+	github.com/cisco-open/kubei/runtime_scan/api v0.0.0
+	github.com/cisco-open/kubei/shared v0.0.0
 	github.com/go-openapi/loads v0.21.0
 	github.com/go-openapi/runtime v0.21.1
 	github.com/go-openapi/strfmt v0.21.1
@@ -20,15 +24,15 @@ require (
 	gotest.tools v2.2.0+incompatible
 	k8s.io/apimachinery v0.23.4
 	k8s.io/client-go v0.23.4
-	github.com/cisco-open/kubei/api v0.0.0
-	github.com/cisco-open/kubei/runtime_scan v0.0.0
-	github.com/cisco-open/kubei/runtime_scan/api v0.0.0
-	github.com/cisco-open/kubei/shared v0.0.0
+)
+
+require (
+	github.com/Portshift/dockle v0.3.2-0.20220411110521-ea4a00a6462d
+	github.com/google/martian v2.1.0+incompatible
 )
 
 require (
 	cloud.google.com/go/compute v1.5.0 // indirect
-	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
 	github.com/CycloneDX/cyclonedx-go v0.5.0 // indirect
 	github.com/GoogleCloudPlatform/docker-credential-gcr v2.0.5+incompatible // indirect
 	github.com/Microsoft/go-winio v0.5.1 // indirect
