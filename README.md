@@ -154,7 +154,7 @@ Contributions of integrations with additional tools are more than welcome!
            ```
         3. Run the backend locally using demo data:
            ```shell
-           DATABASE_DRIVER=LOCAL FAKE_DATA=true ENABLE_DB_INFO_LOGS=true ./backend/bin/backend run
+           FAKE_RUNTIME_SCANNER=true DATABASE_DRIVER=LOCAL FAKE_DATA=true ENABLE_DB_INFO_LOGS=true ./backend/bin/backend run
            ```
     
 2. Open KubeClarity UI in the browser: <http://localhost:8080/>
