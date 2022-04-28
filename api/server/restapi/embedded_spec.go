@@ -1820,6 +1820,9 @@ func init() {
             "$ref": "#/definitions/RuntimeScanFailure"
           }
         },
+        "scanType": {
+          "$ref": "#/definitions/ScanType"
+        },
         "vulnerabilityPerSeverity": {
           "type": "array",
           "items": {
@@ -1876,11 +1879,20 @@ func init() {
       }
     },
     "ScanTime": {
-      "description": "scan time of schedule scan",
+      "description": "scan time of scheduled scan",
       "type": "string",
       "enum": [
         "LATER",
         "REPETITIVE"
+      ],
+      "readOnly": true
+    },
+    "ScanType": {
+      "description": "scan type",
+      "type": "string",
+      "enum": [
+        "QUICK",
+        "SCHEDULE"
       ],
       "readOnly": true
     },
@@ -5403,6 +5415,9 @@ func init() {
             "$ref": "#/definitions/RuntimeScanFailure"
           }
         },
+        "scanType": {
+          "$ref": "#/definitions/ScanType"
+        },
         "vulnerabilityPerSeverity": {
           "type": "array",
           "items": {
@@ -5459,11 +5474,20 @@ func init() {
       }
     },
     "ScanTime": {
-      "description": "scan time of schedule scan",
+      "description": "scan time of scheduled scan",
       "type": "string",
       "enum": [
         "LATER",
         "REPETITIVE"
+      ],
+      "readOnly": true
+    },
+    "ScanType": {
+      "description": "scan type",
+      "type": "string",
+      "enum": [
+        "QUICK",
+        "SCHEDULE"
       ],
       "readOnly": true
     },
