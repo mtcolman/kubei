@@ -1948,6 +1948,10 @@ func init() {
         "cisDockerBenchmarkCounters": {
           "$ref": "#/definitions/CISDockerBenchmarkScanCounters"
         },
+        "cisDockerBenchmarkScanEnabled": {
+          "description": "Indicates whether CIS docker benchmark scan was enabled",
+          "type": "boolean"
+        },
         "counters": {
           "$ref": "#/definitions/RuntimeScanCounters"
         },
@@ -5673,6 +5677,10 @@ func init() {
         },
         "cisDockerBenchmarkCounters": {
           "$ref": "#/definitions/CISDockerBenchmarkScanCounters"
+        },
+        "cisDockerBenchmarkScanEnabled": {
+          "description": "Indicates whether CIS docker benchmark scan was enabled",
+          "type": "boolean"
         },
         "counters": {
           "$ref": "#/definitions/RuntimeScanCounters"
