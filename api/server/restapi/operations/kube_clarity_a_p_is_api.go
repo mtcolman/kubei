@@ -117,6 +117,9 @@ func NewKubeClarityAPIsAPI(spec *loads.Document) *KubeClarityAPIsAPI {
 		PutRuntimeScanStopHandler: PutRuntimeScanStopHandlerFunc(func(params PutRuntimeScanStopParams) middleware.Responder {
 			return middleware.NotImplemented("operation PutRuntimeScanStop has not yet been implemented")
 		}),
+		PutRuntimeScheduleScanStartHandler: PutRuntimeScheduleScanStartHandlerFunc(func(params PutRuntimeScheduleScanStartParams) middleware.Responder {
+			return middleware.NotImplemented("operation PutRuntimeScheduleScanStart has not yet been implemented")
+		}),
 	}
 }
 
@@ -203,6 +206,8 @@ type KubeClarityAPIsAPI struct {
 	PutRuntimeScanStartHandler PutRuntimeScanStartHandler
 	// PutRuntimeScanStopHandler sets the operation handler for the put runtime scan stop operation
 	PutRuntimeScanStopHandler PutRuntimeScanStopHandler
+	// PutRuntimeScheduleScanStartHandler sets the operation handler for the put runtime schedule scan start operation
+	PutRuntimeScheduleScanStartHandler PutRuntimeScheduleScanStartHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -354,6 +359,9 @@ func (o *KubeClarityAPIsAPI) Validate() error {
 	}
 	if o.PutRuntimeScanStopHandler == nil {
 		unregistered = append(unregistered, "PutRuntimeScanStopHandler")
+	}
+	if o.PutRuntimeScheduleScanStartHandler == nil {
+		unregistered = append(unregistered, "PutRuntimeScheduleScanStartHandler")
 	}
 
 	if len(unregistered) > 0 {
@@ -543,6 +551,10 @@ func (o *KubeClarityAPIsAPI) initHandlerCache() {
 		o.handlers["PUT"] = make(map[string]http.Handler)
 	}
 	o.handlers["PUT"]["/runtime/scan/stop"] = NewPutRuntimeScanStop(o.context, o.PutRuntimeScanStopHandler)
+	if o.handlers["PUT"] == nil {
+		o.handlers["PUT"] = make(map[string]http.Handler)
+	}
+	o.handlers["PUT"]["/runtime/scheduleScan/start"] = NewPutRuntimeScheduleScanStart(o.context, o.PutRuntimeScheduleScanStartHandler)
 }
 
 // Serve creates a http handler to serve the API over HTTP

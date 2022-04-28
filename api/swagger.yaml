@@ -604,6 +604,47 @@ definitions:
         items:
           type: 'string'  #empty = all
 
+  ScanInterval:
+    type: object
+    properties:
+      repeatEvery:
+        type: 'integer'
+        format: 'uint32'
+      timeUnit:
+        $ref: '#/definitions/TimeUnit'
+      at:
+        type: 'string'
+        format: date-time
+
+  TimeUnit:
+    description: 'time unit of schedule scan'
+    type: 'string'
+    readOnly: true
+    enum:
+      - HOURS
+      - DAYS
+      - WEEKS
+
+  ScanTime:
+    description: 'scan time of schedule scan'
+    type: 'string'
+    readOnly: true
+    enum:
+      - LATER
+      - REPETITIVE
+
+  RuntimeScheduleScanConfig:
+    type: object
+    properties:
+      namespaces:
+        type: 'array'
+        items:
+          type: 'string'  #empty = all
+      scanTime:
+        $ref: '#/definitions/ScanTime'
+      scanInterval:
+        $ref: '#/definitions/ScanInterval'
+
   Progress:
     type: object
     properties:
@@ -665,6 +706,28 @@ paths:
             type: 'array'
             items:
               $ref: '#/definitions/Namespace'
+        default:
+          $ref: '#/responses/UnknownError'
+
+  /runtime/scheduleScan/start:
+    put:
+      summary: 'Start a runtime schedule scan'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          required: true
+          schema:
+            description: 'Runtime schedule scan configuration'
+            $ref: '#/definitions/RuntimeScheduleScanConfig'
+      responses:
+        '201':
+          description: 'Success'
+          schema:
+            $ref: '#/responses/Success'
+        '400':
+          description: 'Schedule scan failed to start'
+          schema:
+            type: 'string'
         default:
           $ref: '#/responses/UnknownError'
 
